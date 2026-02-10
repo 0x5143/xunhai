@@ -31,10 +31,10 @@ public class ShowFPS : MonoBehaviour {
             m_Text.fontSize = 18;
             m_Text.color = Color.white;
             RectTransform rectTransform = m_Text.GetComponent<RectTransform>();
-            rectTransform.anchorMin = new Vector2(0, 1);
-            rectTransform.anchorMax = new Vector2(0, 1);
-            rectTransform.pivot = new Vector2(0, 1);
-            rectTransform.anchoredPosition = new Vector2(5, -5);
+            rectTransform.anchorMin = new Vector2(0, 0);
+            rectTransform.anchorMax = new Vector2(0, 0);
+            rectTransform.pivot = new Vector2(0, 0);
+            rectTransform.anchoredPosition = new Vector2(5, 80);
             rectTransform.sizeDelta = new Vector2(400, 100);
             
             // Try to get a font, use Arial if available
