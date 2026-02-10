@@ -355,8 +355,6 @@ public class NcParticleSystem : NcEffectBehaviour
 			// 			m_pe.particles = oriParts;
 			// 	}
 			// }
-				}
-			}
 		}
 	}
 

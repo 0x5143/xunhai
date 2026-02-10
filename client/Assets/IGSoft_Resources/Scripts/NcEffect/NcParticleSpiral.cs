@@ -205,6 +205,7 @@ public class NcParticleSpiral : NcEffectBehaviour
 		Debug.LogWarning("NcParticleSpiral requires legacy ParticleEmitter which has been removed in newer Unity versions. This component is disabled.");
 		enabled = false;
 		return;
+	}
 		
 		/*
 		if (m_ParticlePrefab == null)
