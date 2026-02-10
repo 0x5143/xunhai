@@ -56,6 +56,8 @@ public class NsSharedManager : MonoBehaviour
 			NcParticleSystem ps = sharedObj.GetComponent<NcParticleSystem>();
 			if (ps)
 				ps.enabled = false;
+			// Legacy particle system no longer supported in newer Unity versions
+#if !UNITY_5_4_OR_NEWER
 			if (sharedObj.GetComponent<ParticleEmitter>())
 			{
 				sharedObj.GetComponent<ParticleEmitter>().emit			= false;
@@ -64,6 +66,7 @@ public class NsSharedManager : MonoBehaviour
 				if (paAni)
 					paAni.autodestruct = false;
 			}
+#endif
 			NcParticleSystem ncPsCom = sharedObj.GetComponent<NcParticleSystem>();
 			if (ncPsCom)
 				ncPsCom.m_bBurst = false;
