@@ -463,9 +463,9 @@ namespace NavMeshExtension
             //draw a circle at each vertex position
             for (int i = 0; i < allPoints.Length; i++)
             {
-                Handles.CircleCap(0, allPoints[i],
+                Handles.CircleHandleCap(0, allPoints[i],
                             Quaternion.LookRotation(Vector3.up, Vector3.forward),
-                            HandleUtility.GetHandleSize(allPoints[i]) * 0.1f);
+                            HandleUtility.GetHandleSize(allPoints[i]) * 0.1f, EventType.Repaint);
             }
         }
 
