@@ -1,4 +1,4 @@
-f22w3.xml|242|<component size="400,360">
+f22w3.xml|250|<component size="400,360">
   <displayList>
     <component id="n0" name="frame" src="ykv21" xy="0,0">
       <relation target="" sidePair="width-width%,height-height%"/>
