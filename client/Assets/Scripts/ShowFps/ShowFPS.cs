@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Text;
 
 public class ShowFPS : MonoBehaviour {
 
-    public GUIText m_Text = null;
+    public Text m_Text = null;
     public float m_UpdateInterval = 1.0f;
     public int m_Frame = 0;
     public float m_LastInterval = 0f;
@@ -14,9 +15,32 @@ public class ShowFPS : MonoBehaviour {
         m_Frame = 0;
         if (!m_Text)
         {
-            m_Text = gameObject.AddComponent<GUIText>();
+            GameObject textObject = new GameObject("FPSText");
+            textObject.transform.SetParent(transform);
+            Canvas canvas = FindObjectOfType<Canvas>();
+            if (canvas == null)
+            {
+                GameObject canvasObject = new GameObject("Canvas");
+                canvas = canvasObject.AddComponent<Canvas>();
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                canvasObject.AddComponent<CanvasScaler>();
+                canvasObject.AddComponent<GraphicRaycaster>();
+            }
+            textObject.transform.SetParent(canvas.transform);
+            m_Text = textObject.AddComponent<Text>();
             m_Text.fontSize = 18;
-            m_Text.pixelOffset = new Vector2(5, 80);
+            m_Text.color = Color.white;
+            RectTransform rectTransform = m_Text.GetComponent<RectTransform>();
+            rectTransform.anchorMin = new Vector2(0, 1);
+            rectTransform.anchorMax = new Vector2(0, 1);
+            rectTransform.pivot = new Vector2(0, 1);
+            rectTransform.anchoredPosition = new Vector2(5, -5);
+            rectTransform.sizeDelta = new Vector2(400, 100);
+            
+            // Try to get a font, use Arial if available
+            Font font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            if (font != null)
+                m_Text.font = font;
         }
     }
 	

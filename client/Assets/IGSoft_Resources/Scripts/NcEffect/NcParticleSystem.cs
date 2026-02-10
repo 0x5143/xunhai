@@ -64,9 +64,10 @@ public class NcParticleSystem : NcEffectBehaviour
 	protected	bool					m_bMeshParticleEmitter			= false;
 
  	protected	ParticleSystem			m_ps;
-	protected	ParticleEmitter			m_pe;
-	protected	ParticleAnimator		m_pa;
-	protected	ParticleRenderer		m_pr;
+	// Legacy particle system types removed in newer Unity versions
+	// protected	ParticleEmitter			m_pe;
+	// protected	ParticleAnimator		m_pa;
+	// protected	ParticleRenderer		m_pr;
 
 	protected	ParticleSystem.Particle[]	m_BufPsParts;
 	protected	ParticleSystem.Particle[]	m_BufColliderOriParts;
@@ -87,7 +88,8 @@ public class NcParticleSystem : NcEffectBehaviour
 
 	public bool IsLegacy()
 	{
-        return GetComponent<ParticleEmitter>() != null && GetComponent<ParticleEmitter>().enabled;
+		// Legacy particle system is no longer supported in newer Unity versions
+		return false;
 	}
 
 #if UNITY_EDITOR
@@ -96,7 +98,7 @@ public class NcParticleSystem : NcEffectBehaviour
 		if (1 < gameObject.GetComponents(GetType()).Length)
 			return "SCRIPT_WARRING_DUPLICATE";
 
-        if (GetComponent<ParticleSystem>() == null && GetComponent<ParticleEmitter>() == null)
+		if (GetComponent<ParticleSystem>() == null)
 			return "SCRIPT_EMPTY_PARTICLE";
 
 // 		if (m_ParticleDestruct != ParticleDestruct.NONE && m_AttachPrefab == null)
@@ -145,14 +147,16 @@ public class NcParticleSystem : NcEffectBehaviour
 		if (IsShuriken())
 		{
             m_ps = GetComponent<ParticleSystem>();
-		} else {
-			m_pe = GetComponent<ParticleEmitter>();
-			m_pa = GetComponent<ParticleAnimator>();
-			m_pr = GetComponent<ParticleRenderer>();
-
-			if (m_pe != null)
-				m_bMeshParticleEmitter	= (m_pe.ToString().Contains("MeshParticleEmitter"));
 		}
+		// Legacy particle system no longer supported
+		// else {
+		// 	m_pe = GetComponent<ParticleEmitter>();
+		// 	m_pa = GetComponent<ParticleAnimator>();
+		// 	m_pr = GetComponent<ParticleRenderer>();
+		//
+		// 	if (m_pe != null)
+		// 		m_bMeshParticleEmitter	= (m_pe.ToString().Contains("MeshParticleEmitter"));
+		// }
 	}
 
 	void OnEnable()
@@ -183,7 +187,8 @@ public class NcParticleSystem : NcEffectBehaviour
 		m_fDurationStartTime = m_fEmitStartTime = m_fStartTime = GetEngineTime();
 		if (IsShuriken())
 			ShurikenInitParticle();
-		else LegacyInitParticle();
+		// Legacy particle system no longer supported
+		// else LegacyInitParticle();
 		if (m_bBurst || 0 < m_fStartDelayTime)
 			SetEnableParticle(false);
 // 		if (m_bBurst == false && m_fStartDelayTime == 0)
@@ -220,7 +225,7 @@ public class NcParticleSystem : NcEffectBehaviour
 					m_nCreateCount++;
 					if (IsShuriken())
 						m_ps.Emit(m_fBurstEmissionCount);
-					else if (m_pe != null) m_pe.Emit(m_fBurstEmissionCount);
+					// Legacy particle system no longer supported
 				}
 			} else {
 //				SetEnableParticle(false);
@@ -303,49 +308,53 @@ public class NcParticleSystem : NcEffectBehaviour
 					if (bUpdate)
 						m_ps.SetParticles(m_BufColliderOriParts, m_ps.particleCount);
 				}
-			} else {
-				if (m_pe != null)
-				{
-					Particle[]	oriParts = m_pe.particles;
-					Particle[]	conParts = m_pe.particles;
-					LegacyScaleParticle(conParts, m_bScaleWithTransform, true);
-
-					// Check Collider
-					for (int n = 0; n < conParts.Length; n++)
-					{
-						bool bDestect = false;
-						if (m_bWorldSpace)
-							 pos = conParts[n].position;
-						else pos = transform.TransformPoint(conParts[n].position);
-
-						if (m_ParticleDestruct == ParticleDestruct.COLLISION)
-						{
-#if UNITY_EDITOR
-							Collider[]	colls = Physics.OverlapSphere(pos, m_fCollisionRadius, m_CollisionLayer);
-							foreach (Collider coll in colls)
-							{
-								if (coll.gameObject.GetComponent("FxmInfoIndexing") != null)
-									continue;
-								bDestect = true;
-								break;
-							}
-#else
-							if (Physics.CheckSphere(pos, m_fCollisionRadius, m_CollisionLayer))
-								bDestect = true;
-#endif
-						} else
-						if (m_ParticleDestruct == ParticleDestruct.WORLD_Y && pos.y <= m_fDestructPosY)
-							bDestect = true;
-
-						if (bDestect && 0 < oriParts[n].energy)
-						{
-							oriParts[n].energy	= 0.0f;
-							bUpdate				= true;
-							CreateAttachPrefab(pos, conParts[n].size * m_fPrefabScale);
-						}
-					}
-					if (bUpdate)
-						m_pe.particles = oriParts;
+			}
+			// Legacy particle system collision handling removed
+			// else {
+			// 	if (m_pe != null)
+			// 	{
+			// 		Particle[]	oriParts = m_pe.particles;
+			// 		Particle[]	conParts = m_pe.particles;
+			// 		LegacyScaleParticle(conParts, m_bScaleWithTransform, true);
+			//
+			// 		// Check Collider
+			// 		for (int n = 0; n < conParts.Length; n++)
+			// 		{
+			// 			bool bDestect = false;
+			// 			if (m_bWorldSpace)
+			// 				 pos = conParts[n].position;
+			// 			else pos = transform.TransformPoint(conParts[n].position);
+			//
+			// 			if (m_ParticleDestruct == ParticleDestruct.COLLISION)
+			// 			{
+			// #if UNITY_EDITOR
+			// 				Collider[]	colls = Physics.OverlapSphere(pos, m_fCollisionRadius, m_CollisionLayer);
+			// 				foreach (Collider coll in colls)
+			// 				{
+			// 					if (coll.gameObject.GetComponent("FxmInfoIndexing") != null)
+			// 						continue;
+			// 					bDestect = true;
+			// 					break;
+			// 				}
+			// #else
+			// 				if (Physics.CheckSphere(pos, m_fCollisionRadius, m_CollisionLayer))
+			// 					bDestect = true;
+			// #endif
+			// 			} else
+			// 			if (m_ParticleDestruct == ParticleDestruct.WORLD_Y && pos.y <= m_fDestructPosY)
+			// 				bDestect = true;
+			//
+			// 			if (bDestect && 0 < oriParts[n].energy)
+			// 			{
+			// 				oriParts[n].energy	= 0.0f;
+			// 				bUpdate				= true;
+			// 				CreateAttachPrefab(pos, conParts[n].size * m_fPrefabScale);
+			// 			}
+			// 		}
+			// 		if (bUpdate)
+			// 			m_pe.particles = oriParts;
+			// 	}
+			// }
 				}
 			}
 		}
@@ -360,7 +369,8 @@ public class NcParticleSystem : NcEffectBehaviour
 			m_bScalePreRender = true;
 			if (IsShuriken())
 				 ShurikenSetRuntimeParticleScale(true);
-			else LegacySetRuntimeParticleScale(true);
+			// Legacy particle system no longer supported
+			// else LegacySetRuntimeParticleScale(true);
 		}
 	}
 
@@ -372,7 +382,8 @@ public class NcParticleSystem : NcEffectBehaviour
 		{
 			if (IsShuriken())
 				 ShurikenSetRuntimeParticleScale(false);
-			else LegacySetRuntimeParticleScale(false);
+			// Legacy particle system no longer supported
+			// else LegacySetRuntimeParticleScale(false);
 		}
 		m_OldPos = transform.position;
 		m_bScalePreRender = false;
@@ -430,8 +441,9 @@ public class NcParticleSystem : NcEffectBehaviour
 // 		Log.info("SetEnableParticle");
 		if (m_ps != null)
 			m_ps.enableEmission = bEnable;
-		if (m_pe != null)
-			m_pe.emit = bEnable;
+		// Legacy particle system no longer supported
+		// if (m_pe != null)
+		// 	m_pe.emit = bEnable;
 	}
 
 	// Legacy ----------------------------------------------------------
@@ -445,6 +457,8 @@ public class NcParticleSystem : NcEffectBehaviour
 		return m_fLegacyMaxMeshNormalVelocity * (m_bScaleWithTransform ? NcTransformTool.GetTransformScaleMeanValue(transform) : 1);
 	}
 
+	// Legacy particle system methods - no longer supported in newer Unity versions
+	/*
 	void LegacyInitParticle()
 	{
 		if (m_pe != null)
@@ -599,6 +613,7 @@ public class NcParticleSystem : NcEffectBehaviour
 		}
 		return parts;
 	}
+	*/
 
 	// Shuriken ---------------------------------------------------------------------------
 	void ShurikenInitParticle()
@@ -678,7 +693,8 @@ public class NcParticleSystem : NcEffectBehaviour
 		m_fEmitTime				/= fSpeedRate;
 		m_fSleepTime			/= fSpeedRate;
 		m_fShurikenSpeedRate	*= fSpeedRate;
-		LegacyParticleSpeed(fSpeedRate);
+		// Legacy particle system no longer supported
+		// LegacyParticleSpeed(fSpeedRate);
 //	 	m_fStartLifeTimeRate	= 1;
 // 		m_fStartEmissionRate	= 1;
 //		m_fStartSpeedRate		= 1;
