@@ -6,7 +6,7 @@ public class UnityEngine_NavMeshPathStatusWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginEnum(typeof(UnityEngine.NavMeshPathStatus));
+		L.BeginEnum(typeof(UnityEngine.AI.NavMeshPathStatus));
 		L.RegVar("PathComplete", get_PathComplete, null);
 		L.RegVar("PathPartial", get_PathPartial, null);
 		L.RegVar("PathInvalid", get_PathInvalid, null);
@@ -17,21 +17,21 @@ public class UnityEngine_NavMeshPathStatusWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PathComplete(IntPtr L)
 	{
-		ToLua.Push(L, UnityEngine.NavMeshPathStatus.PathComplete);
+		ToLua.Push(L, UnityEngine.AI.NavMeshPathStatus.PathComplete);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PathPartial(IntPtr L)
 	{
-		ToLua.Push(L, UnityEngine.NavMeshPathStatus.PathPartial);
+		ToLua.Push(L, UnityEngine.AI.NavMeshPathStatus.PathPartial);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PathInvalid(IntPtr L)
 	{
-		ToLua.Push(L, UnityEngine.NavMeshPathStatus.PathInvalid);
+		ToLua.Push(L, UnityEngine.AI.NavMeshPathStatus.PathInvalid);
 		return 1;
 	}
 
@@ -39,7 +39,7 @@ public class UnityEngine_NavMeshPathStatusWrap
 	static int IntToEnum(IntPtr L)
 	{
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
-		UnityEngine.NavMeshPathStatus o = (UnityEngine.NavMeshPathStatus)arg0;
+		UnityEngine.AI.NavMeshPathStatus o = (UnityEngine.AI.NavMeshPathStatus)arg0;
 		ToLua.Push(L, o);
 		return 1;
 	}

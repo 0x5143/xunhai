@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Effects/WeaponFX/DistortPerlin" {
 	Properties{
 			_TintColor("Main Color", Color) = (1,1,1,1)
@@ -69,8 +72,8 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 						v2f o;
 
 						//////// Displacemnt by noise texture (rgb) and drop waves (a)
-						float4 oPos = mul(UNITY_MATRIX_MVP, v.vertex);
-						float3 wpos = mul(_Object2World, v.vertex).xyz;
+						float4 oPos = UnityObjectToClipPos(v.vertex);
+						float3 wpos = mul(unity_ObjectToWorld, v.vertex).xyz;
 
 						float4 coordNoise = float4(wpos * _NoiseScale.xyz, 0);
 						float4 coordDisplDrop = float4(wpos * _DropWavesScale.x, 0);
@@ -79,7 +82,7 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 						v.vertex.xyz += v.normal * _DropWavesScale.y * (tex2.a * 2 - 0.5) * 0.01;
 						v.vertex.xyz += v.normal*(_DropWavesScale.z * 0.005) + tex1.rgb * _NoiseScale.w - _NoiseScale.w / 2;
 
-						o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+						o.vertex = UnityObjectToClipPos(v.vertex);
 						//////////////////////////////////////////////////////////////
 
 						#if UNITY_UV_STARTS_AT_TOP

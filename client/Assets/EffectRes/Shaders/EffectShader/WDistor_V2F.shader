@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Blue/Effect/WNiuqu_Sheng" {
     Properties {
     	_Color ("Main Color", Color) = (0,-0.5,1,.1)
@@ -36,7 +38,7 @@ Shader "Blue/Effect/WNiuqu_Sheng" {
            v2f vert(appdata_base v)
 			{
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord;
 				return o;
 			}

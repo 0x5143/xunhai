@@ -1,4 +1,6 @@
-﻿// 功  能： 透视 双面 alpha
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// 功  能： 透视 双面 alpha
 // 时  间： 2018-04-20 12:59:15
 // 作  者： zwx
 // E-mail： zhuang_wx@qq.com
@@ -41,7 +43,7 @@ Shader "A_SKG/Character"
 			v2f vert (appdata_base v)  
 			{
 				v2f o;  
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);  
+				o.pos = UnityObjectToClipPos(v.vertex);  
 				o.viewDir = ObjSpaceViewDir(v.vertex);  
 				o.normal = v.normal;  
 				return o;  

@@ -461,7 +461,7 @@ public class UnityEngine_QualitySettingsWrap
 	{
 		try
 		{
-			ToLua.Push(L, UnityEngine.QualitySettings.blendWeights);
+			ToLua.Push(L, UnityEngine.QualitySettings.skinWeights);
 			return 1;
 		}
 		catch(Exception e)
@@ -773,8 +773,8 @@ public class UnityEngine_QualitySettingsWrap
 	{
 		try
 		{
-			UnityEngine.BlendWeights arg0 = (UnityEngine.BlendWeights)ToLua.CheckObject(L, 2, typeof(UnityEngine.BlendWeights));
-			UnityEngine.QualitySettings.blendWeights = arg0;
+			UnityEngine.SkinWeights arg0 = (UnityEngine.SkinWeights)ToLua.CheckObject(L, 2, typeof(UnityEngine.SkinWeights));
+			UnityEngine.QualitySettings.skinWeights = arg0;
 			return 0;
 		}
 		catch(Exception e)

@@ -161,14 +161,14 @@ public class UnityEngine_ApplicationWrap
 			if (count == 1 && TypeChecker.CheckTypes(L, 1, typeof(string)))
 			{
 				string arg0 = ToLua.ToString(L, 1);
-				UnityEngine.Application.CaptureScreenshot(arg0);
+				UnityEngine.ScreenCapture.CaptureScreenshot(arg0);
 				return 0;
 			}
 			else if (count == 2 && TypeChecker.CheckTypes(L, 1, typeof(string), typeof(int)))
 			{
 				string arg0 = ToLua.ToString(L, 1);
 				int arg1 = (int)LuaDLL.lua_tonumber(L, 2);
-				UnityEngine.Application.CaptureScreenshot(arg0, arg1);
+				UnityEngine.ScreenCapture.CaptureScreenshot(arg0, arg1);
 				return 0;
 			}
 			else

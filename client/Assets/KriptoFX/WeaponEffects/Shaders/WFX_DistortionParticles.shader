@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Effects/FPS_Pack/DistortionParticles" {
 	Properties{
 			_MainTex("Normalmap (RG) & CutOut (B)", 2D) = "black" {}
@@ -60,7 +63,7 @@ Shader "Effects/FPS_Pack/DistortionParticles" {
 		v2f vert(appdata_t v)
 		{
 			v2f o;
-			o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+			o.vertex = UnityObjectToClipPos(v.vertex);
 			#ifdef SOFTPARTICLES_ON
 				o.projPos = ComputeScreenPos(o.vertex);
 				COMPUTE_EYEDEPTH(o.projPos.z);
@@ -78,7 +81,7 @@ Shader "Effects/FPS_Pack/DistortionParticles" {
 		#endif
 			o.uvbump = TRANSFORM_TEX(v.texcoord, _MainTex);
 			#if UNITY_VERSION >= 520
-			o.dist.x = distance(_WorldSpaceCameraPos, mul(_Object2World, v.vertex));
+			o.dist.x = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld, v.vertex));
 			o.dist.x = saturate(0.01 + 1 / (o.dist.x * o.dist.x / 15));
 			o.dist.y = 0;
 			#endif

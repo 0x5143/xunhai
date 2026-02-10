@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // 功  能： 武器
 // 时  间： 2016-3-28
 // 作  者： zwx
@@ -42,7 +44,7 @@ Shader "A_SKG/Weapon"
 			v2f vert (appdata_base v)  
 			{
 				v2f o;  
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);  
+				o.pos = UnityObjectToClipPos(v.vertex);  
 				o.viewDir = ObjSpaceViewDir(v.vertex);  
 				o.normal = v.normal;  
 				return o;  

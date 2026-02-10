@@ -879,7 +879,7 @@ public class UnityEngine_CameraWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Camera obj = (UnityEngine.Camera)o;
-			bool ret = obj.hdr;
+			bool ret = obj.allowHDR;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
 		}
@@ -1701,7 +1701,7 @@ public class UnityEngine_CameraWrap
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Camera obj = (UnityEngine.Camera)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
-			obj.hdr = arg0;
+			obj.allowHDR = arg0;
 			return 0;
 		}
 		catch(Exception e)

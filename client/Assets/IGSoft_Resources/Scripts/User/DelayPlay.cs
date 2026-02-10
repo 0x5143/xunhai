@@ -132,8 +132,8 @@ public class DelayPlay : MonoBehaviour {
 					break;
 				}
 				#else
-				AnimationInfo[] infs = amt.GetCurrentAnimationClipState(0);
-				foreach (AnimationInfo info in infs)
+				AnimatorClipInfo[] infs = amt.GetCurrentAnimatorClipInfo(0);
+				foreach (AnimatorClipInfo info in infs)
 				{
 					info.clip.wrapMode = loop? WrapMode.Loop : WrapMode.Once;
 					amt.Play(info.clip.name, -1, 0);
@@ -174,8 +174,8 @@ public class DelayPlay : MonoBehaviour {
 				break;
 			}
 			#else			
-			AnimationInfo[] infs = amt.GetCurrentAnimationClipState(0);
-			foreach (AnimationInfo info in infs)
+			AnimatorClipInfo[] infs = amt.GetCurrentAnimatorClipInfo(0);
+			foreach (AnimatorClipInfo info in infs)
 			{
 				info.clip.wrapMode = WrapMode.Once;
 				amt.Play(info.clip.name, -1, 0);

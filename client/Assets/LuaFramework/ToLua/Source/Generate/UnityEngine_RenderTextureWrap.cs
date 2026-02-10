@@ -480,7 +480,7 @@ public class UnityEngine_RenderTextureWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.RenderTexture obj = (UnityEngine.RenderTexture)o;
-			bool ret = obj.generateMips;
+			bool ret = obj.autoGenerateMips;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
 		}
@@ -761,7 +761,7 @@ public class UnityEngine_RenderTextureWrap
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.RenderTexture obj = (UnityEngine.RenderTexture)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
-			obj.generateMips = arg0;
+			obj.autoGenerateMips = arg0;
 			return 0;
 		}
 		catch(Exception e)

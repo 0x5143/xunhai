@@ -1,4 +1,8 @@
-﻿#warning Upgrade NOTE: unity_Scale shader variable was removed; replaced 'unity_Scale.w' with '1.0'
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+#warning Upgrade NOTE: unity_Scale shader variable was removed; replaced 'unity_Scale.w' with '1.0'
 
 Shader "Blue/Character/BaseCubeUV" 
 {
@@ -95,15 +99,15 @@ Shader "Blue/Character/BaseCubeUV"
 			{
 			  	VertexOutput o;
 
-			  	o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+			  	o.pos = UnityObjectToClipPos (v.vertex);
 			  	o.uv = v.uv.xy;
-			  	o.normal = normalize(mul((float3x3)_Object2World, SCALED_NORMAL));
+			  	o.normal = normalize(mul((float3x3)unity_ObjectToWorld, SCALED_NORMAL));
 			  	o.vlight = ShadeSH9 (float4(o.normal,1.0));
-			  	o.posWorld 	= mul(_Object2World, v.vertex).xyz;
+			  	o.posWorld 	= mul(unity_ObjectToWorld, v.vertex).xyz;
 			  	
 			  	float3 viewDir = -ObjSpaceViewDir(v.vertex);
 			  	float3 viewRefl = reflect (viewDir, v.normal);
-			  	o.worldRefl = mul ((float3x3)_Object2World, viewRefl);
+			  	o.worldRefl = mul ((float3x3)unity_ObjectToWorld, viewRefl);
 			  
 			  	return o;
 			}
@@ -186,7 +190,7 @@ Shader "Blue/Character/BaseCubeUV"
 				
 				output.xy=float2(0,0);
 				
-				vt= mul(_Object2World, v.vertex);
+				vt= mul(unity_ObjectToWorld, v.vertex);
 				vt.xyz*=1.0;
 				output.xy.y=vt.y/vt.w;
 				
@@ -194,9 +198,9 @@ Shader "Blue/Character/BaseCubeUV"
 				
 				vt.xz=vt.xz-((vt.y-_ShadowHeight)/lightDir.y)*lightDir.xz;
 				vt.y=0.001+_ShadowHeight;
-				vt=mul(_World2Object,vt);
+				vt=mul(unity_WorldToObject,vt);
 				
-				output.pos=mul(UNITY_MATRIX_MVP, vt);
+				output.pos=UnityObjectToClipPos(vt);
 				
 				return output;
 			}

@@ -6,7 +6,7 @@ public class UnityEngine_NavMeshAgentWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(UnityEngine.NavMeshAgent), typeof(UnityEngine.Behaviour));
+		L.BeginClass(typeof(UnityEngine.AI.NavMeshAgent), typeof(UnityEngine.Behaviour));
 		L.RegFunction("SetDestination", SetDestination);
 		L.RegFunction("ActivateCurrentOffMeshLink", ActivateCurrentOffMeshLink);
 		L.RegFunction("CompleteOffMeshLink", CompleteOffMeshLink);
@@ -68,7 +68,7 @@ public class UnityEngine_NavMeshAgentWrap
 
 			if (count == 0)
 			{
-				UnityEngine.NavMeshAgent obj = new UnityEngine.NavMeshAgent();
+				UnityEngine.AI.NavMeshAgent obj = new UnityEngine.AI.NavMeshAgent();
 				ToLua.Push(L, obj);
 				return 1;
 			}
@@ -89,7 +89,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			bool o = obj.SetDestination(arg0);
 			LuaDLL.lua_pushboolean(L, o);
@@ -107,7 +107,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.ActivateCurrentOffMeshLink(arg0);
 			return 0;
@@ -124,7 +124,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			obj.CompleteOffMeshLink();
 			return 0;
 		}
@@ -140,7 +140,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			bool o = obj.Warp(arg0);
 			LuaDLL.lua_pushboolean(L, o);
@@ -158,7 +158,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			obj.Move(arg0);
 			return 0;
@@ -175,7 +175,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			obj.Stop();
 			return 0;
 		}
@@ -191,7 +191,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			obj.Resume();
 			return 0;
 		}
@@ -207,7 +207,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			obj.ResetPath();
 			return 0;
 		}
@@ -223,8 +223,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
-			UnityEngine.NavMeshPath arg0 = (UnityEngine.NavMeshPath)ToLua.CheckObject(L, 2, typeof(UnityEngine.NavMeshPath));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
+			UnityEngine.AI.NavMeshPath arg0 = (UnityEngine.AI.NavMeshPath)ToLua.CheckObject(L, 2, typeof(UnityEngine.AI.NavMeshPath));
 			bool o = obj.SetPath(arg0);
 			LuaDLL.lua_pushboolean(L, o);
 			return 1;
@@ -241,8 +241,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
-			UnityEngine.NavMeshHit arg0;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
+			UnityEngine.AI.NavMeshHit arg0;
 			bool o = obj.FindClosestEdge(out arg0);
 			LuaDLL.lua_pushboolean(L, o);
 			ToLua.PushValue(L, arg0);
@@ -260,9 +260,9 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
-			UnityEngine.NavMeshHit arg1;
+			UnityEngine.AI.NavMeshHit arg1;
 			bool o = obj.Raycast(arg0, out arg1);
 			LuaDLL.lua_pushboolean(L, o);
 			ToLua.PushValue(L, arg1);
@@ -280,9 +280,9 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
-			UnityEngine.NavMeshPath arg1 = (UnityEngine.NavMeshPath)ToLua.CheckObject(L, 3, typeof(UnityEngine.NavMeshPath));
+			UnityEngine.AI.NavMeshPath arg1 = (UnityEngine.AI.NavMeshPath)ToLua.CheckObject(L, 3, typeof(UnityEngine.AI.NavMeshPath));
 			bool o = obj.CalculatePath(arg0, arg1);
 			LuaDLL.lua_pushboolean(L, o);
 			return 1;
@@ -299,10 +299,10 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
-			UnityEngine.NavMeshHit arg2;
+			UnityEngine.AI.NavMeshHit arg2;
 			bool o = obj.SamplePathPosition(arg0, arg1, out arg2);
 			LuaDLL.lua_pushboolean(L, o);
 			ToLua.PushValue(L, arg2);
@@ -320,7 +320,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 			obj.SetAreaCost(arg0, arg1);
@@ -338,7 +338,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.NavMeshAgent));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)ToLua.CheckObject(L, 1, typeof(UnityEngine.AI.NavMeshAgent));
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			float o = obj.GetAreaCost(arg0);
 			LuaDLL.lua_pushnumber(L, o);
@@ -376,7 +376,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.destination;
 			ToLua.Push(L, ret);
 			return 1;
@@ -395,7 +395,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.stoppingDistance;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -414,7 +414,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.velocity;
 			ToLua.Push(L, ret);
 			return 1;
@@ -433,7 +433,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.nextPosition;
 			ToLua.Push(L, ret);
 			return 1;
@@ -452,7 +452,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.steeringTarget;
 			ToLua.Push(L, ret);
 			return 1;
@@ -471,7 +471,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.desiredVelocity;
 			ToLua.Push(L, ret);
 			return 1;
@@ -490,7 +490,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.remainingDistance;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -509,7 +509,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.baseOffset;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -528,7 +528,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.isOnOffMeshLink;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -547,8 +547,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.OffMeshLinkData ret = obj.currentOffMeshLinkData;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.OffMeshLinkData ret = obj.currentOffMeshLinkData;
 			ToLua.PushValue(L, ret);
 			return 1;
 		}
@@ -566,8 +566,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.OffMeshLinkData ret = obj.nextOffMeshLinkData;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.OffMeshLinkData ret = obj.nextOffMeshLinkData;
 			ToLua.PushValue(L, ret);
 			return 1;
 		}
@@ -585,7 +585,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.autoTraverseOffMeshLink;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -604,7 +604,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.autoBraking;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -623,7 +623,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.autoRepath;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -642,7 +642,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.hasPath;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -661,7 +661,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.pathPending;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -680,7 +680,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.isPathStale;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -699,8 +699,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.NavMeshPathStatus ret = obj.pathStatus;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshPathStatus ret = obj.pathStatus;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -718,7 +718,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 ret = obj.pathEndPosition;
 			ToLua.Push(L, ret);
 			return 1;
@@ -737,8 +737,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.NavMeshPath ret = obj.path;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshPath ret = obj.path;
 			ToLua.PushObject(L, ret);
 			return 1;
 		}
@@ -756,7 +756,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			int ret = obj.areaMask;
 			LuaDLL.lua_pushinteger(L, ret);
 			return 1;
@@ -775,7 +775,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.speed;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -794,7 +794,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.angularSpeed;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -813,7 +813,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.acceleration;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -832,7 +832,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.updatePosition;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -851,7 +851,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.updateRotation;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -870,7 +870,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.radius;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -889,7 +889,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float ret = obj.height;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -908,8 +908,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.ObstacleAvoidanceType ret = obj.obstacleAvoidanceType;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.ObstacleAvoidanceType ret = obj.obstacleAvoidanceType;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -927,7 +927,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			int ret = obj.avoidancePriority;
 			LuaDLL.lua_pushinteger(L, ret);
 			return 1;
@@ -946,7 +946,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool ret = obj.isOnNavMesh;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
@@ -965,7 +965,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			obj.destination = arg0;
 			return 0;
@@ -984,7 +984,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.stoppingDistance = arg0;
 			return 0;
@@ -1003,7 +1003,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			obj.velocity = arg0;
 			return 0;
@@ -1022,7 +1022,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			obj.nextPosition = arg0;
 			return 0;
@@ -1041,7 +1041,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.baseOffset = arg0;
 			return 0;
@@ -1060,7 +1060,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.autoTraverseOffMeshLink = arg0;
 			return 0;
@@ -1079,7 +1079,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.autoBraking = arg0;
 			return 0;
@@ -1098,7 +1098,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.autoRepath = arg0;
 			return 0;
@@ -1117,8 +1117,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.NavMeshPath arg0 = (UnityEngine.NavMeshPath)ToLua.CheckObject(L, 2, typeof(UnityEngine.NavMeshPath));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshPath arg0 = (UnityEngine.AI.NavMeshPath)ToLua.CheckObject(L, 2, typeof(UnityEngine.AI.NavMeshPath));
 			obj.path = arg0;
 			return 0;
 		}
@@ -1136,7 +1136,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			obj.areaMask = arg0;
 			return 0;
@@ -1155,7 +1155,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.speed = arg0;
 			return 0;
@@ -1174,7 +1174,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.angularSpeed = arg0;
 			return 0;
@@ -1193,7 +1193,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.acceleration = arg0;
 			return 0;
@@ -1212,7 +1212,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.updatePosition = arg0;
 			return 0;
@@ -1231,7 +1231,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.updateRotation = arg0;
 			return 0;
@@ -1250,7 +1250,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.radius = arg0;
 			return 0;
@@ -1269,7 +1269,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.height = arg0;
 			return 0;
@@ -1288,8 +1288,8 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
-			UnityEngine.ObstacleAvoidanceType arg0 = (UnityEngine.ObstacleAvoidanceType)ToLua.CheckObject(L, 2, typeof(UnityEngine.ObstacleAvoidanceType));
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
+			UnityEngine.AI.ObstacleAvoidanceType arg0 = (UnityEngine.AI.ObstacleAvoidanceType)ToLua.CheckObject(L, 2, typeof(UnityEngine.AI.ObstacleAvoidanceType));
 			obj.obstacleAvoidanceType = arg0;
 			return 0;
 		}
@@ -1307,7 +1307,7 @@ public class UnityEngine_NavMeshAgentWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			UnityEngine.NavMeshAgent obj = (UnityEngine.NavMeshAgent)o;
+			UnityEngine.AI.NavMeshAgent obj = (UnityEngine.AI.NavMeshAgent)o;
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			obj.avoidancePriority = arg0;
 			return 0;

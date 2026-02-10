@@ -45,10 +45,10 @@ public class NavExport : MonoBehaviour
             for (int j = 0; j < x; ++j)
             {
                 int res = list[j, i];
-                NavMeshHit hit;
+                UnityEngine.AI.NavMeshHit hit;
                 for (int k = -SampleHieght; k < SampleHieght; ++k)
                 {
-                    if (NavMesh.SamplePosition(startPos + new Vector3(j * accuracy, k, i * accuracy), out hit, SampleRange, NavMesh.AllAreas))
+                    if (UnityEngine.AI.NavMesh.SamplePosition(startPos + new Vector3(j * accuracy, k, i * accuracy), out hit, SampleRange, UnityEngine.AI.NavMesh.AllAreas))
                     {
                         res = 1;
                         break;
