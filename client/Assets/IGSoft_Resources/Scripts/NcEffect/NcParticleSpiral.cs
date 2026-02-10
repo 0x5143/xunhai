@@ -217,6 +217,7 @@ public class NcParticleSpiral : NcEffectBehaviour
 
 		// Record the current Inspector settings as the defaults.
 		defaultSettings = getSettings();
+		*/
 	}
 
 	/* ------------------------------------------------------------------------------------------------------

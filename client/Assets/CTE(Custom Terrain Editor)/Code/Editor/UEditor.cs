@@ -141,7 +141,7 @@ namespace CTEUtil.CTEEditor {
                     break;
                 case EventType.MouseMove:
                     break;
-                case EventType.keyUp:
+                case EventType.KeyUp:
                     m_Editor.Save();
                     break;
                 case EventType.Repaint:

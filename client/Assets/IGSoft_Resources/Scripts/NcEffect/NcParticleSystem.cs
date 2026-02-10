@@ -294,9 +294,11 @@ public class NcParticleSystem : NcEffectBehaviour
 							if (Physics.CheckSphere(pos, m_fCollisionRadius, m_CollisionLayer))
 								bDestect = true;
 #endif
-						} else
-						if (m_ParticleDestruct == ParticleDestruct.WORLD_Y && pos.y <= m_fDestructPosY)
+						}
+						else if (m_ParticleDestruct == ParticleDestruct.WORLD_Y && pos.y <= m_fDestructPosY)
+						{
 							bDestect = true;
+						}
 
 						if (bDestect && 0 < m_BufColliderOriParts[n].remainingLifetime)
 						{
@@ -355,8 +357,6 @@ public class NcParticleSystem : NcEffectBehaviour
 			// 			m_pe.particles = oriParts;
 			// 	}
 			// }
-				}
-			}
 		}
 	}
 

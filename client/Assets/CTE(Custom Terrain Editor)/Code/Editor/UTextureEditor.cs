@@ -310,7 +310,7 @@ namespace CTEUtil.CTEEditor {
         UPass PassField(Rect rect, UPass pass, int index) {
             Event e = Event.current;
             bool selected = index == m_SelectedPass;
-            if (e.type == EventType.mouseDown && rect.Contains(e.mousePosition)) {
+            if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition)) {
                 m_SelectedPass = index;
                 m_SelectedTex = -1;
             }
@@ -322,7 +322,7 @@ namespace CTEUtil.CTEEditor {
             newRect.width -= 4;
             newRect.height -= 4;
             GUIStyle style = new GUIStyle("ServerUpdateChangesetOn");
-            if (selected && Event.current.type == EventType.repaint)
+            if (selected && Event.current.type == EventType.Repaint)
                 style.Draw(newRect, false, false, false, false);
             GUI.color = bgColor;
             GUI.BeginGroup(rect);

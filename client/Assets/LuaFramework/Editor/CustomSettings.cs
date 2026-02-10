@@ -145,7 +145,7 @@ public static class CustomSettings
 
 		_GT(typeof(QualitySettings)),
 		_GT(typeof(RenderSettings)),												   
-		_GT(typeof(BlendWeights)),		   
+		_GT(typeof(SkinWeights)),		   
 		_GT(typeof(RenderTexture)),
 		_GT(typeof(Resources)),
 		_GT(typeof(UnityEngine.SceneManagement.LoadSceneMode)),		 
@@ -287,8 +287,8 @@ public static class CustomSettings
         _GT(typeof(FillType)),
 
         _GT(typeof(Endian)),
-        _GT(typeof(NavMeshPathStatus)),
-        _GT(typeof(NavMeshAgent)),
+        _GT(typeof(UnityEngine.AI.NavMeshPathStatus)),
+        _GT(typeof(UnityEngine.AI.NavMeshAgent)),
         _GT(typeof(ListLayoutType)),
         _GT(typeof(NormalCameraController)),
         _GT(typeof(MicroPhoneInput)),
@@ -319,7 +319,7 @@ public static class CustomSettings
         typeof(AnimationClip),
         typeof(AnimationState),
 
-        typeof(BlendWeights),
+        typeof(SkinWeights),
         typeof(RenderTexture),
         typeof(Rigidbody),
     };

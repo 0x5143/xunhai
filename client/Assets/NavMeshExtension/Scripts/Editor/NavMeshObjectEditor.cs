@@ -177,7 +177,7 @@ namespace NavMeshExtension
                 Event e = Event.current;
 
                 //place new point if the left mouse button was clicked
-                if (e.type == EventType.mouseUp && e.button == 0)
+                if (e.type == EventType.MouseUp && e.button == 0)
                 {
                     Undo.RegisterCompleteObjectUndo(script, "Split Mesh");
 
@@ -212,7 +212,7 @@ namespace NavMeshExtension
             }
 
             //not in edit mode, clicking near vertices will select them and show handles
-            if (!placing && Event.current.type == EventType.mouseUp && Event.current.button == 0)
+            if (!placing && Event.current.type == EventType.MouseUp && Event.current.button == 0)
             {
                 //select/unselect vertex point
                 if (dragIndex >= 0)
@@ -227,7 +227,7 @@ namespace NavMeshExtension
             }
 
             //right-clicking anywhere will unselect all vertices
-            if (!placing && Event.current.type == EventType.mouseUp && Event.current.button == 1)
+            if (!placing && Event.current.type == EventType.MouseUp && Event.current.button == 1)
             {
                 selected.Clear();
             }
