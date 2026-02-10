@@ -163,9 +163,12 @@ public class NcParticleSpiral : NcEffectBehaviour
 #if UNITY_EDITOR
 	public override string CheckProperty()
 	{
-		if ((m_ParticlePrefab == null || m_ParticlePrefab.GetComponent<ParticleEmitter>() == null) && (GetComponent<ParticleEmitter>() == null))
-			return "SCRIPT_EMPTY_LEGACYPARTICLEPREFAB";
-		return "";	// no error
+		// Legacy particle system is no longer supported in newer Unity versions
+		// This script requires legacy ParticleEmitter which has been removed
+		return "SCRIPT_LEGACY_PARTICLE_NOT_SUPPORTED";
+		// if ((m_ParticlePrefab == null || m_ParticlePrefab.GetComponent<ParticleEmitter>() == null) && (GetComponent<ParticleEmitter>() == null))
+		// 	return "SCRIPT_EMPTY_LEGACYPARTICLEPREFAB";
+		// return "";	// no error
 	}
 #endif
 
@@ -198,6 +201,12 @@ public class NcParticleSpiral : NcEffectBehaviour
 	{
 		m_fStartTime = GetEngineTime();
 
+		// Legacy particle system no longer supported in newer Unity versions
+		Debug.LogWarning("NcParticleSpiral requires legacy ParticleEmitter which has been removed in newer Unity versions. This component is disabled.");
+		enabled = false;
+		return;
+		
+		/*
 		if (m_ParticlePrefab == null)
 		{
 			ParticleEmitter emitter = GetComponent<ParticleEmitter>();
@@ -218,6 +227,8 @@ public class NcParticleSpiral : NcEffectBehaviour
 	   ------------------------------------------------------------------------------------------------------- */
 	void SpawnEffect()
 	{
+#if LEGACY_PARTICLES
+		// Legacy particle system no longer supported - this code has been disabled
 		// Instantiate the effect prefab.
 		GameObject effectObject;
 		if (m_ParticlePrefab != null)
@@ -307,6 +318,7 @@ public class NcParticleSpiral : NcEffectBehaviour
 		}
 		// Update the actual particles.
 		emitter.particles = p;
+#endif // LEGACY_PARTICLES
 	}
  
 	void Update()
@@ -405,6 +417,8 @@ public class NcParticleSpiral : NcEffectBehaviour
 	// Kill all current spawns of the effect.
 	private void killCurrentEffects()
 	{
+#if LEGACY_PARTICLES
+		// Legacy particle system no longer supported - this code has been disabled
 		// Loop thru the particle emitter children of this object.  Each one is a particle effect system
 		// we want to destroy.
 		ParticleEmitter[] emitters = this.transform.GetComponentsInChildren<ParticleEmitter>();
@@ -424,6 +438,7 @@ public class NcParticleSpiral : NcEffectBehaviour
 				p[i].energy = 0.1f;
 			emitter.particles = p;
 		}
+#endif // LEGACY_PARTICLES
 	}
 
 	// Event Function -------------------------------------------------------------------

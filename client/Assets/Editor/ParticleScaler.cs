@@ -89,6 +89,8 @@ public class ParticleScaler : MonoBehaviour
 	void ScaleLegacySystems(float scaleFactor)
 	{
 #if UNITY_EDITOR 
+		// Legacy particle system no longer supported in newer Unity versions
+		/*
 		//get all emitters we need to do scaling on
 		ParticleEmitter[] emitters = GetComponentsInChildren<ParticleEmitter>();
 
@@ -118,6 +120,7 @@ public class ParticleScaler : MonoBehaviour
 			animator.force *= scaleFactor;
 			animator.rndForce *= scaleFactor;
 		}
+		*/
 #endif
 	}
 

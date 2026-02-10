@@ -85,13 +85,14 @@ public class NsSharedManager : MonoBehaviour
 		if (sharedObj == null)
 			return;
 		sharedObj.transform.position = worldPos;
-		if (sharedObj.GetComponent<ParticleEmitter>() != null)
-			 sharedObj.GetComponent<ParticleEmitter>().Emit(nEmitCount);
-		else {
-				ParticleSystem ps = sharedObj.GetComponent<ParticleSystem>();
-			if (ps != null)
-				ps.Emit(nEmitCount);
-		}
+		// Legacy particle system no longer supported in newer Unity versions
+		// if (sharedObj.GetComponent<ParticleEmitter>() != null)
+		// 	 sharedObj.GetComponent<ParticleEmitter>().Emit(nEmitCount);
+		// else {
+		ParticleSystem ps = sharedObj.GetComponent<ParticleSystem>();
+		if (ps != null)
+			ps.Emit(nEmitCount);
+		// }
 	}
 
 	// AudioSource
