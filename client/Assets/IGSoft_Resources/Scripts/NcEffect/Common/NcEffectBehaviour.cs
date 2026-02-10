@@ -339,10 +339,11 @@ public class NcEffectBehaviour : MonoBehaviour
         foreach (ParticleSystem em in pss)
             if (em != null)
                 em.enableEmission = false;
-        ParticleEmitter[] pes = gameObject.GetComponentsInChildren<ParticleEmitter>(true);
-        foreach (ParticleEmitter em in pes)
-            if (em != null)
-                em.emit = false;
+        // Legacy particle system no longer supported in newer Unity versions
+        // ParticleEmitter[] pes = gameObject.GetComponentsInChildren<ParticleEmitter>(true);
+        // foreach (ParticleEmitter em in pes)
+        //     if (em != null)
+        //         em.emit = false;
     }
 
     // SafeCreate -----------------------------------------------------------------------------------
@@ -484,7 +485,7 @@ public class NcEffectBehaviour : MonoBehaviour
     {
     }
 
-    // Freeze 2014/9/29 ¼ÇÂ¼ºÍ»Ö¸´»î¶¯ÐÔ
+    // Freeze 2014/9/29 ï¿½ï¿½Â¼ï¿½Í»Ö¸ï¿½ï¿½î¶¯ï¿½ï¿½
     protected bool m_startActiv;
 
     //
@@ -496,7 +497,7 @@ public class NcEffectBehaviour : MonoBehaviour
     {
         gameObject.SetActive(m_startActiv);
     }
-    // ÊÇ·ñÔÚÕ½¶·ÖÐÊ¹ÓÃ(ÒâÔÚ¼æÈÝFXµÄ×Ô¶¯Ïú»ÙºÍ¶ÔÏó³ØµÄÖØÓÃ³åÍ»)
+    // ï¿½Ç·ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½(ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½FXï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÙºÍ¶ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½Ã³ï¿½Í»)
 
     public bool isReuse;
 }

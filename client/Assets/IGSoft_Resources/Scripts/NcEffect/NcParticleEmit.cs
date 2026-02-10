@@ -35,7 +35,7 @@ public class NcParticleEmit : NcEffectBehaviour
 #if UNITY_EDITOR
 	public override string CheckProperty()
 	{
-		if (m_ParticlePrefab == null || (m_ParticlePrefab.GetComponent<ParticleEmitter>() == null && m_ParticlePrefab.GetComponent<ParticleSystem>() == null))
+		if (m_ParticlePrefab == null || m_ParticlePrefab.GetComponent<ParticleSystem>() == null)
 			return "SCRIPT_EMPTY_PARTICLEPREFAB";
 		return "";	// no error
 	}
@@ -159,15 +159,16 @@ public class NcParticleEmit : NcEffectBehaviour
 		// PrefabAdjustSpeed - unsupported
 		// m_bDetachParent - unsupported
 
-		if (m_CreateGameObject.GetComponent<ParticleEmitter>() != null)
-			 m_CreateGameObject.GetComponent<ParticleEmitter>().Emit(m_EmitCount);
+		// Legacy particle system no longer supported in newer Unity versions
+		// if (m_CreateGameObject.GetComponent<ParticleEmitter>() != null)
+		// 	 m_CreateGameObject.GetComponent<ParticleEmitter>().Emit(m_EmitCount);
 // 			 m_CreateGameObject.particleEmitter.Emit(newPos, Vector3.zero, 1, 1, Color.white);
-		else {
-			if (m_ps == null)
-				m_ps = m_CreateGameObject.GetComponent<ParticleSystem>();
-			if (m_ps != null)
-				m_ps.Emit(m_EmitCount);
-		}
+		// else {
+		if (m_ps == null)
+			m_ps = m_CreateGameObject.GetComponent<ParticleSystem>();
+		if (m_ps != null)
+			m_ps.Emit(m_EmitCount);
+		// }
 		return m_CreateGameObject;
 	}
 
