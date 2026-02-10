@@ -173,7 +173,7 @@ public class LuaClient : MonoBehaviour
         Instance = this;
         Init();
 
-#if UNITY_5_4
+#if UNITY_5_4_OR_NEWER
         SceneManager.sceneLoaded += OnSceneLoaded;
 #endif        
     }
@@ -196,7 +196,7 @@ public class LuaClient : MonoBehaviour
         }
     }
 
-#if UNITY_5_4
+#if UNITY_5_4_OR_NEWER
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         OnLevelLoaded(scene.buildIndex);
@@ -212,7 +212,7 @@ public class LuaClient : MonoBehaviour
     {
         if (luaState != null)
         {
-#if UNITY_5_4
+#if UNITY_5_4_OR_NEWER
         SceneManager.sceneLoaded -= OnSceneLoaded;
 #endif    
             LuaState state = luaState;

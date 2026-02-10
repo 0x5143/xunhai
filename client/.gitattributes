@@ -1,0 +1,2 @@
+# Prevent autocrlf from corrupting FairyGUI package files
+*.bytes binary
