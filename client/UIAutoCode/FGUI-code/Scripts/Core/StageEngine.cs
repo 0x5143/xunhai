@@ -27,7 +27,6 @@ namespace FairyGUI
 		}
 #endif
 
-#if UNITY_5_4_OR_NEWER
 		void OnEnable()
 		{
 			SceneManager.sceneLoaded += OnSceneLoaded;
@@ -42,12 +41,6 @@ namespace FairyGUI
 		{
 			StageCamera.CheckMainCamera();
 		}
-#else
-		void OnLevelWasLoaded()
-		{
-			StageCamera.CheckMainCamera();
-		}
-#endif
 
 		void OnApplicationQuit()
 		{

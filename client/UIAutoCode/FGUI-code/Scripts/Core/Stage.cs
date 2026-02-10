@@ -3,9 +3,7 @@ using UnityEngine;
 using System.Text;
 using FairyGUI.Utils;
 
-#if UNITY_5_3_OR_NEWER
 using UnityEngine.SceneManagement;
-#endif
 
 namespace FairyGUI
 {
@@ -164,18 +162,14 @@ namespace FairyGUI
 
 			Timers.inst.Add(5, 0, RunTextureCollector);
 
-#if UNITY_5_4_OR_NEWER
 			SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-#endif
 			_focusRemovedDelegate = OnFocusRemoved;
 		}
 
-#if UNITY_5_4_OR_NEWER
 		void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
 		{
 			StageCamera.CheckMainCamera();
 		}
-#endif
 
 		/// <summary>
 		/// 
