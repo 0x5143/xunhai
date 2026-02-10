@@ -74,7 +74,6 @@ public class UnityEngine_CameraWrap
 		L.RegVar("stereoSeparation", get_stereoSeparation, set_stereoSeparation);
 		L.RegVar("stereoConvergence", get_stereoConvergence, set_stereoConvergence);
 		L.RegVar("cameraType", get_cameraType, set_cameraType);
-		L.RegVar("stereoMirrorMode", get_stereoMirrorMode, set_stereoMirrorMode);
 		L.RegVar("targetDisplay", get_targetDisplay, set_targetDisplay);
 		L.RegVar("main", get_main, null);
 		L.RegVar("current", get_current, null);
@@ -1327,25 +1326,6 @@ public class UnityEngine_CameraWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_stereoMirrorMode(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Camera obj = (UnityEngine.Camera)o;
-			bool ret = obj.stereoMirrorMode;
-			LuaDLL.lua_pushboolean(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index stereoMirrorMode on a nil value" : e.Message);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_targetDisplay(IntPtr L)
 	{
 		object o = null;
@@ -2049,25 +2029,6 @@ public class UnityEngine_CameraWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index cameraType on a nil value" : e.Message);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_stereoMirrorMode(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Camera obj = (UnityEngine.Camera)o;
-			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
-			obj.stereoMirrorMode = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index stereoMirrorMode on a nil value" : e.Message);
 		}
 	}
 

@@ -85,11 +85,6 @@ public static class LuaBinder
 		UnityEngine_AnimatorStateInfoWrap.Register(L);
 		UnityEngine_NavMeshPathStatusWrap.Register(L);
 		UnityEngine_NavMeshAgentWrap.Register(L);
-		L.BeginModule("Experimental");
-		L.BeginModule("Director");
-		UnityEngine_Experimental_Director_DirectorPlayerWrap.Register(L);
-		L.EndModule();
-		L.EndModule();
 		L.BeginModule("SceneManagement");
 		UnityEngine_SceneManagement_LoadSceneModeWrap.Register(L);
 		UnityEngine_SceneManagement_SceneManagerWrap.Register(L);

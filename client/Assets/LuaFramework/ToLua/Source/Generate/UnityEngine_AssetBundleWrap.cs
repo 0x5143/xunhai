@@ -35,16 +35,7 @@ public class UnityEngine_AssetBundleWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 0)
-			{
-				UnityEngine.AssetBundle obj = new UnityEngine.AssetBundle();
-				ToLua.Push(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.AssetBundle.New");
-			}
+			return LuaDLL.luaL_throw(L, "UnityEngine.AssetBundle does not have a public parameterless constructor");
 		}
 		catch(Exception e)
 		{

@@ -790,7 +790,7 @@ namespace System.IO.Compression
                     break;
                 case Compression.Deflate:
                     //using (var outPutStream = new ZOutputStream(outStream, zlibConst.Z_DEFAULT_COMPRESSION))
-                    var outPutStream = new Ionic.Zlib.DeflateStream(outStream, Ionic.Zlib.CompressionMode.Compress, CompressionLevel.BestCompression,true);
+                    var outPutStream = new Ionic.Zlib.DeflateStream(outStream, Ionic.Zlib.CompressionMode.Compress, Ionic.Zlib.CompressionLevel.BestCompression,true);
                     {
                         outPutStream.FlushMode = FlushType.Full;
                         int buffSize = ZlibConstants.WorkingBufferSizeDefault;

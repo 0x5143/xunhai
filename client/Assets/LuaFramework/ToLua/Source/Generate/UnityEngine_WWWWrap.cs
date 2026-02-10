@@ -8,7 +8,6 @@ public class UnityEngine_WWWWrap
 	{
 		L.BeginClass(typeof(UnityEngine.WWW), typeof(System.Object));
 		L.RegFunction("Dispose", Dispose);
-		L.RegFunction("InitWWW", InitWWW);
 		L.RegFunction("EscapeURL", EscapeURL);
 		L.RegFunction("UnEscapeURL", UnEscapeURL);
 		L.RegFunction("GetAudioClip", GetAudioClip);
@@ -93,25 +92,6 @@ public class UnityEngine_WWWWrap
 			ToLua.CheckArgsCount(L, 1);
 			UnityEngine.WWW obj = (UnityEngine.WWW)ToLua.CheckObject(L, 1, typeof(UnityEngine.WWW));
 			obj.Dispose();
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitWWW(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 4);
-			UnityEngine.WWW obj = (UnityEngine.WWW)ToLua.CheckObject(L, 1, typeof(UnityEngine.WWW));
-			string arg0 = ToLua.CheckString(L, 2);
-			byte[] arg1 = ToLua.CheckByteBuffer(L, 3);
-			string[] arg2 = ToLua.CheckStringArray(L, 4);
-			obj.InitWWW(arg0, arg1, arg2);
 			return 0;
 		}
 		catch(Exception e)
