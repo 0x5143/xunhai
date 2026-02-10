@@ -302,7 +302,7 @@ public class UnityEngine_Texture2DWrap
 			{
 				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.ToObject(L, 1);
 				byte[] arg0 = ToLua.CheckByteBuffer(L, 2);
-				bool o = obj.LoadImage(arg0);
+				bool o = UnityEngine.ImageConversion.LoadImage(obj, arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
@@ -311,7 +311,7 @@ public class UnityEngine_Texture2DWrap
 				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.ToObject(L, 1);
 				byte[] arg0 = ToLua.CheckByteBuffer(L, 2);
 				bool arg1 = LuaDLL.lua_toboolean(L, 3);
-				bool o = obj.LoadImage(arg0, arg1);
+				bool o = UnityEngine.ImageConversion.LoadImage(obj, arg0, arg1);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
@@ -651,7 +651,7 @@ public class UnityEngine_Texture2DWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-			byte[] o = obj.EncodeToPNG();
+			byte[] o = UnityEngine.ImageConversion.EncodeToPNG(obj);
 			ToLua.Push(L, o);
 			return 1;
 		}
@@ -671,7 +671,7 @@ public class UnityEngine_Texture2DWrap
 			if (count == 1 && TypeChecker.CheckTypes(L, 1, typeof(UnityEngine.Texture2D)))
 			{
 				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.ToObject(L, 1);
-				byte[] o = obj.EncodeToJPG();
+				byte[] o = UnityEngine.ImageConversion.EncodeToJPG(obj);
 				ToLua.Push(L, o);
 				return 1;
 			}
@@ -679,7 +679,7 @@ public class UnityEngine_Texture2DWrap
 			{
 				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.ToObject(L, 1);
 				int arg0 = (int)LuaDLL.lua_tonumber(L, 2);
-				byte[] o = obj.EncodeToJPG(arg0);
+				byte[] o = UnityEngine.ImageConversion.EncodeToJPG(obj, arg0);
 				ToLua.Push(L, o);
 				return 1;
 			}

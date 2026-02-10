@@ -35,16 +35,7 @@ public class UnityEngine_AudioClipWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 0)
-			{
-				UnityEngine.AudioClip obj = new UnityEngine.AudioClip();
-				ToLua.Push(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.AudioClip.New");
-			}
+			return LuaDLL.luaL_throw(L, "UnityEngine.AudioClip does not have a public parameterless constructor");
 		}
 		catch(Exception e)
 		{

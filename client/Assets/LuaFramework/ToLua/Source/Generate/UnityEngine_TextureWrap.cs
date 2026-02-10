@@ -31,16 +31,7 @@ public class UnityEngine_TextureWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 0)
-			{
-				UnityEngine.Texture obj = new UnityEngine.Texture();
-				ToLua.Push(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.Texture.New");
-			}
+			return LuaDLL.luaL_throw(L, "UnityEngine.Texture constructor is not publicly accessible");
 		}
 		catch(Exception e)
 		{

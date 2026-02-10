@@ -37,16 +37,7 @@ public class UnityEngine_ShaderWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 0)
-			{
-				UnityEngine.Shader obj = new UnityEngine.Shader();
-				ToLua.Push(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.Shader.New");
-			}
+			return LuaDLL.luaL_throw(L, "UnityEngine.Shader does not have a public parameterless constructor");
 		}
 		catch(Exception e)
 		{
