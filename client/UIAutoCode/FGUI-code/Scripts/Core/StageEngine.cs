@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FairyGUI
 {
@@ -26,7 +27,22 @@ namespace FairyGUI
 		}
 #endif
 
-#if !UNITY_5_4_OR_NEWER
+#if UNITY_5_4_OR_NEWER
+		void OnEnable()
+		{
+			SceneManager.sceneLoaded += OnSceneLoaded;
+		}
+
+		void OnDisable()
+		{
+			SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+		{
+			StageCamera.CheckMainCamera();
+		}
+#else
 		void OnLevelWasLoaded()
 		{
 			StageCamera.CheckMainCamera();
