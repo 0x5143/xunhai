@@ -250,9 +250,11 @@ public static class LuaBinder
 		L.EndModule();
 		L.BeginPreLoad();
 		L.AddPreLoad("UnityEngine.MeshRenderer", LuaOpen_UnityEngine_MeshRenderer, typeof(UnityEngine.MeshRenderer));
+#if !UNITY_5_4_OR_NEWER
 		L.AddPreLoad("UnityEngine.ParticleEmitter", LuaOpen_UnityEngine_ParticleEmitter, typeof(UnityEngine.ParticleEmitter));
 		L.AddPreLoad("UnityEngine.ParticleRenderer", LuaOpen_UnityEngine_ParticleRenderer, typeof(UnityEngine.ParticleRenderer));
 		L.AddPreLoad("UnityEngine.ParticleAnimator", LuaOpen_UnityEngine_ParticleAnimator, typeof(UnityEngine.ParticleAnimator));
+#endif
 		L.AddPreLoad("UnityEngine.BoxCollider", LuaOpen_UnityEngine_BoxCollider, typeof(UnityEngine.BoxCollider));
 		L.AddPreLoad("UnityEngine.MeshCollider", LuaOpen_UnityEngine_MeshCollider, typeof(UnityEngine.MeshCollider));
 		L.AddPreLoad("UnityEngine.SphereCollider", LuaOpen_UnityEngine_SphereCollider, typeof(UnityEngine.SphereCollider));
@@ -1042,6 +1044,7 @@ public static class LuaBinder
 		}
 	}
 
+#if !UNITY_5_4_OR_NEWER
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LuaOpen_UnityEngine_ParticleEmitter(IntPtr L)
 	{
@@ -1095,6 +1098,7 @@ public static class LuaBinder
 			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
+#endif
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LuaOpen_UnityEngine_BoxCollider(IntPtr L)
